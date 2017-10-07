@@ -69,17 +69,20 @@ knit        : slidify::knit2slides
   </tr>
 </tbody>
 </table>
---
+
+--- .class #id
+
 ## Slide 2
 
 ![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png)
---
+
+--- .class #id
 
 ## Slide 3
-
 ![iris](http://www.spataru.at/iris-dataset-svm/iris_types.jpg)
 
---
+--- .class #id
+
 ## Slide 4
 
 ```r
