@@ -13,56 +13,81 @@ knit        : slidify::knit2slides
 
 ## Slide 1
 
-
-```r
-library(tables, quietly = TRUE)
-```
-
-```
-## 
-## Attaching package: 'Hmisc'
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     format.pval, round.POSIXt, trunc.POSIXt, units
-```
-
-```r
-library(pander)
-tab <- tabular( (Species + 1) ~ (n=1) + Format(digits=2)*
-         (Sepal.Length + Sepal.Width)*(mean + sd), data=iris )
-pander(tab)
-```
-
-
--------------------------------------------------------------------
-      \         \     Sepal.Length\     \     Sepal.Width\     \   
-   Species       n         mean         sd        mean         sd  
--------------- ----- ---------------- ------ --------------- ------
-   *setosa*     50         5.01        0.35       3.43        0.38 
-
- *versicolor*   50         5.94        0.52       2.77        0.31 
-
- *virginica*    50         6.59        0.64       2.97        0.32 
-
-    *All*       150        5.84        0.83       3.06        0.44 
--------------------------------------------------------------------
-
+<table>
+<caption>Base iris</caption>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Sepal.Length </th>
+   <th style="text-align:right;"> Sepal.Width </th>
+   <th style="text-align:right;"> Petal.Length </th>
+   <th style="text-align:right;"> Petal.Width </th>
+   <th style="text-align:left;"> Species </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 5.1 </td>
+   <td style="text-align:right;"> 3.5 </td>
+   <td style="text-align:right;"> 1.4 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:left;"> setosa </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4.9 </td>
+   <td style="text-align:right;"> 3.0 </td>
+   <td style="text-align:right;"> 1.4 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:left;"> setosa </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4.7 </td>
+   <td style="text-align:right;"> 3.2 </td>
+   <td style="text-align:right;"> 1.3 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:left;"> setosa </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4.6 </td>
+   <td style="text-align:right;"> 3.1 </td>
+   <td style="text-align:right;"> 1.5 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:left;"> setosa </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5.0 </td>
+   <td style="text-align:right;"> 3.6 </td>
+   <td style="text-align:right;"> 1.4 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:left;"> setosa </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5.4 </td>
+   <td style="text-align:right;"> 3.9 </td>
+   <td style="text-align:right;"> 1.7 </td>
+   <td style="text-align:right;"> 0.4 </td>
+   <td style="text-align:left;"> setosa </td>
+  </tr>
+</tbody>
+</table>
+--
 ## Slide 2
 
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png)
+--
+
+## Slide 3
+
+![iris](http://www.spataru.at/iris-dataset-svm/iris_types.jpg)
+
+--
+## Slide 4
 
 ```r
+library(knitr)
+kable(head(iris), "html", caption = "Base iris")
 library(ggplot2)
 box <- ggplot(data=iris, aes(x=Species, y=Sepal.Length))
 box + geom_boxplot(aes(fill=Species)) + 
   ylab("Sepal Length") + ggtitle("Iris Boxplot") +
   stat_summary(fun.y=mean, geom="point", shape=5, size=4) 
 ```
-
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png)
-
-## Slide 3
-
-![iris](http://www.spataru.at/iris-dataset-svm/iris_types.jpg)

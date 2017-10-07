@@ -13,24 +13,33 @@ knit        : slidify::knit2slides
 
 ## Slide 1
 
-```{r}
-library(tables, quietly = TRUE)
-library(pander)
-tab <- tabular( (Species + 1) ~ (n=1) + Format(digits=2)*
-         (Sepal.Length + Sepal.Width)*(mean + sd), data=iris )
-pander(tab)
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+library(knitr)
+kable(head(iris), "html", caption = "Base iris")
 ```
-
+--
 ## Slide 2
 
-```{r}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 library(ggplot2)
 box <- ggplot(data=iris, aes(x=Species, y=Sepal.Length))
 box + geom_boxplot(aes(fill=Species)) + 
   ylab("Sepal Length") + ggtitle("Iris Boxplot") +
   stat_summary(fun.y=mean, geom="point", shape=5, size=4) 
 ```
+--
 
 ## Slide 3
-
 ![iris](http://www.spataru.at/iris-dataset-svm/iris_types.jpg)
+
+--
+## Slide 4
+```{r, eval=FALSE}
+library(knitr)
+kable(head(iris), "html", caption = "Base iris")
+library(ggplot2)
+box <- ggplot(data=iris, aes(x=Species, y=Sepal.Length))
+box + geom_boxplot(aes(fill=Species)) + 
+  ylab("Sepal Length") + ggtitle("Iris Boxplot") +
+  stat_summary(fun.y=mean, geom="point", shape=5, size=4) 
+```
